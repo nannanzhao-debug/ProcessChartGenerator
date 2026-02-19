@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  /* BPMN Colors */
+  --bpmn-start: #22c55e;
+  --bpmn-end: #ef4444;
+  --bpmn-intermediate: #f59e0b;
+  --bpmn-gateway: #f59e0b;
+  --bpmn-task-bg: #ffffff;
+  --bpmn-task-border: #d1d5db;
+  --bpmn-subprocess: #3b82f6;
+  --bpmn-pool-header: #1e293b;
+  --bpmn-pool-bg: #f8fafc;
+  --bpmn-lane-border: #e2e8f0;
+  --bpmn-annotation: #6b7280;
+
+  /* UI Colors */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #14b8a6;
+  --bg: #ffffff;
+  --bg-panel: #f8fafc;
+  --bg-canvas: #fafbfc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background-color: var(--bg-canvas) !important;
+}
+
+.react-flow__minimap {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-flow__controls {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.react-flow__controls-button {
+  border-bottom: 1px solid var(--border) !important;
+  background: white !important;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--bg-panel) !important;
+}
+
+/* Handle visibility — hidden by default, shown on hover/select */
+.react-flow__handle {
+  opacity: 0;
+  width: 8px;
+  height: 8px;
+  transition: opacity 0.15s ease;
+}
+
+.react-flow__node:hover .react-flow__handle,
+.react-flow__node.selected .react-flow__handle {
+  opacity: 1;
+}
+
+/* Show all handles enlarged during connection drag */
+.connecting .react-flow__handle {
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border: 2px solid white;
+}
+
+/* Valid connection target glow */
+.react-flow__handle[data-valid] {
+  background: #22c55e;
+}
+
+/* Edge selection styling */
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #3b82f6;
+  stroke-width: 2.5;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #3b82f6;
+  stroke-width: 2;
+}
+
+/* Edge reconnection endpoint handles — larger grab area */
+.react-flow__edgeupdater {
+  r: 20;
+  cursor: move;
+}
+
+/* Show visible dot at edge endpoints on hover/selection */
+.react-flow__edge:hover .react-flow__edgeupdater,
+.react-flow__edge.selected .react-flow__edgeupdater {
+  fill: rgba(59, 130, 246, 0.2);
+  stroke: #3b82f6;
+  stroke-width: 1;
+}
