@@ -69,17 +69,18 @@ export default function SequenceFlowEdge({
   }
 
   // Extend endpoints slightly into nodes so the visible edge
-  // appears flush with the node boundary (nodes render above edges)
-  const EXT = 2;
-  if (sourcePosition === "top") adjSourceY -= EXT;
-  else if (sourcePosition === "bottom") adjSourceY += EXT;
-  else if (sourcePosition === "left") adjSourceX -= EXT;
-  else if (sourcePosition === "right") adjSourceX += EXT;
+  // appears flush with the node boundary (nodes render above edges).
+  // Direction is inward: opposite to the handle's position side.
+  const EXT = 5;
+  if (sourcePosition === "top") adjSourceY += EXT;
+  else if (sourcePosition === "bottom") adjSourceY -= EXT;
+  else if (sourcePosition === "left") adjSourceX += EXT;
+  else if (sourcePosition === "right") adjSourceX -= EXT;
 
-  if (targetPosition === "top") adjTargetY -= EXT;
-  else if (targetPosition === "bottom") adjTargetY += EXT;
-  else if (targetPosition === "left") adjTargetX -= EXT;
-  else if (targetPosition === "right") adjTargetX += EXT;
+  if (targetPosition === "top") adjTargetY += EXT;
+  else if (targetPosition === "bottom") adjTargetY -= EXT;
+  else if (targetPosition === "left") adjTargetX += EXT;
+  else if (targetPosition === "right") adjTargetX -= EXT;
 
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX: adjSourceX,

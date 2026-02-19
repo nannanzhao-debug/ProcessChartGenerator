@@ -34,15 +34,16 @@ export default function GatewayNode({ id, data }: NodeProps) {
           {label}
         </div>
       )}
-      {/* Handles at diamond tips (corners of the unrotated box) */}
-      <Handle type="source" position={Position.Top} id="source-top" style={{ left: 0 }} />
-      <Handle type="source" position={Position.Right} id="source-right" style={{ top: 0 }} />
-      <Handle type="source" position={Position.Bottom} id="source-bottom" style={{ left: '100%' }} />
-      <Handle type="source" position={Position.Left} id="source-left" style={{ top: '100%' }} />
-      <Handle type="target" position={Position.Top} id="target-top" style={{ left: 0 }} />
-      <Handle type="target" position={Position.Right} id="target-right" style={{ top: 0 }} />
-      <Handle type="target" position={Position.Bottom} id="target-bottom" style={{ left: '100%' }} />
-      <Handle type="target" position={Position.Left} id="target-left" style={{ top: '100%' }} />
+      {/* Handles near diamond tips — offset 3px inward from corners so
+           edges connect where the diamond is wide enough for the arrowhead */}
+      <Handle type="source" position={Position.Top} id="source-top" style={{ left: 3, top: 3 }} />
+      <Handle type="source" position={Position.Right} id="source-right" style={{ top: 3, right: 3 }} />
+      <Handle type="source" position={Position.Bottom} id="source-bottom" style={{ left: 'calc(100% - 3px)', bottom: 3 }} />
+      <Handle type="source" position={Position.Left} id="source-left" style={{ top: 'calc(100% - 3px)', left: 3 }} />
+      <Handle type="target" position={Position.Top} id="target-top" style={{ left: 3, top: 3 }} />
+      <Handle type="target" position={Position.Right} id="target-right" style={{ top: 3, right: 3 }} />
+      <Handle type="target" position={Position.Bottom} id="target-bottom" style={{ left: 'calc(100% - 3px)', bottom: 3 }} />
+      <Handle type="target" position={Position.Left} id="target-left" style={{ top: 'calc(100% - 3px)', left: 3 }} />
     </div>
   );
 }
